@@ -1,5 +1,5 @@
 # Resource group name is output when execution plan is applied.
-resource "azurerm_resource_group" "sh" {
+resource "azurerm_resource_group" "AVD_Projekt" {
   name     = var.rg_name
   location = var.resource_group_location
 }
@@ -7,16 +7,16 @@ resource "azurerm_resource_group" "sh" {
 # Create AVD workspace
 resource "azurerm_virtual_desktop_workspace" "workspace" {
   name                = var.workspace
-  resource_group_name = azurerm_resource_group.sh.name
-  location            = azurerm_resource_group.sh.location
+  resource_group_name = azurerm_resource_group.AVD_Projekt.name
+  location            = azurerm_resource_group.AVD_Projekt.location
   friendly_name       = "${var.prefix} Workspace"
   description         = "${var.prefix} Workspace"
 }
 
 # Create AVD host pool
 resource "azurerm_virtual_desktop_host_pool" "hostpool" {
-  resource_group_name      = azurerm_resource_group.sh.name
-  location                 = azurerm_resource_group.sh.location
+  resource_group_name      = azurerm_resource_group.AVD_Projekt.name
+  location                 = azurerm_resource_group.AVD_Projekt.location
   name                     = var.hostpool
   friendly_name            = var.hostpool
   validate_environment     = true
@@ -34,9 +34,9 @@ resource "azurerm_virtual_desktop_host_pool_registration_info" "registrationinfo
 
 # Create AVD DAG
 resource "azurerm_virtual_desktop_application_group" "dag" {
-  resource_group_name = azurerm_resource_group.sh.name
+  resource_group_name = azurerm_resource_group.AVD_Projekt.name
   host_pool_id        = azurerm_virtual_desktop_host_pool.hostpool.id
-  location            = azurerm_resource_group.sh.location
+  location            = azurerm_resource_group.AVD_Projekt.location
   type                = "Desktop"
   name                = "${var.prefix}-dag"
   friendly_name       = "Desktop AppGroup"
