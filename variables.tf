@@ -1,5 +1,5 @@
 variable "resource_group_location" {
-default     = "eastus"
+default     = "germanywestcentral"
 description = "Location of the resource group."
 }
 
@@ -23,7 +23,7 @@ default     = "AVD-TF-HP"
 
 variable "rfc3339" {
 type        = string
-default     = "2022-03-30T12:43:13Z"
+default     = "2022-04-30T12:43:13Z"
 description = "Registration token expiration"
 }
 

@@ -1,6 +1,6 @@
 output "azure_virtual_desktop_compute_resource_group" {
   description = "Name of the Resource group in which to deploy session host"
-  value       = azurerm_resource_group.sh.name
+  value       = azurerm_resource_group.AVD_Projekt.name
 }
 
 output "azure_virtual_desktop_host_pool" {
@@ -20,7 +20,7 @@ output "azurerm_virtual_desktop_workspace" {
 
 output "location" {
   description = "The Azure region"
-  value       = azurerm_resource_group.sh.location
+  value       = azurerm_resource_group.AVD_Projekt.location
 }
 
 output "AVD_user_groupname" {
