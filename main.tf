@@ -23,10 +23,11 @@ resource "azurerm_virtual_desktop_host_pool" "hostpool" {
   custom_rdp_properties    = "audiocapturemode:i:1;audiomode:i:0;"
   description              = "${var.prefix} Terraform HostPool"
   type                     = "Pooled"
-  maximum_sessions_allowed = 16
+  maximum_sessions_allowed = 5
   load_balancer_type       = "DepthFirst" #[BreadthFirst DepthFirst]
 }
 
+# Reg info to add Sessions Hosts
 resource "azurerm_virtual_desktop_host_pool_registration_info" "registrationinfo" {
   hostpool_id     = azurerm_virtual_desktop_host_pool.hostpool.id
   expiration_date = var.rfc3339
